@@ -1,0 +1,33 @@
+﻿@model laptrinhweb.Identity.AppUser
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Sửa thông tin người dùng</h2>
+<form action="/admin/user/edit/@Model.Id" method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <label for="PhoneNumber">Số điện thoại</label>
+            <input type="text" id="PhoneNumber" name="PhoneNumber" class="form-control" value="@Model.PhoneNumber" placeholder="Số điện thoại" />
+        </div>
+        <div class="col-md-6">
+            <label for="Email">Email</label>
+            <input type="text" id="Email" name="Email" class="form-control" value="@Model.Email" placeholder="Email" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="Address">Địa chỉ</label>
+            <input type="text" id="Address" name="Address" class="form-control" value="@Model.Address" placeholder="Địa chỉ" />
+        </div>
+        <div class="col-md-6">
+            <label for="City">Thành phố</label>
+            <input type="text" id="City" name="City" class="form-control" value="@Model.City" placeholder="Thành phố" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-danger">Sửa</button>
+
+</form>
+
+

@@ -1,0 +1,38 @@
+﻿@model List<laptrinhweb.Models.SanPham>
+
+@{
+    ViewBag.Title = "ApiGet";
+}
+
+<h2>Api Get Products</h2>
+<button type="button" id="btnGetProducts">Get products</button>
+<table class="table productTable">
+    <tr>
+        <th>ID</th>
+        <th>Điện thoại</th>
+        <th>Thương hiệu</th>
+        <th>Giá</th>
+        <th>ImgUrl</th>
+        <th></th>
+
+    </tr>
+</table>
+<script>
+    $(' #btnGetProducts').click(() => {
+        $.ajax({
+            type: 'GET',
+            url: '/api/products',
+            success: (responses) => {
+                for (var i = 0; i <= responses.length; i++) {
+                    const productRow = responses[i];
+                    const strHTML = '<tr><td>' + productRow.SanPhamId + '</td><td>' + productRow.Name + '</td><td>' + productRow.ThuongHieu.Name + '</td><td>' + productRow.Price + '</td><td>' + productRow.ImageUrl + '</td></tr>';
+                    $('.productTable').append(strHTML);
+
+                }
+            },
+            error: (err) => { console.log(err);  }
+        })
+    });
+</script>
+
+

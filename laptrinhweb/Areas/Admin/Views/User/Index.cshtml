@@ -1,0 +1,33 @@
+﻿@model List<laptrinhweb.Identity.AppUser>
+@{
+    ViewBag.Title = "Người dùng";
+}
+
+<h2>Danh sách người dùng</h2>
+<a style="color: blue; text-decoration: underline" href="/admin/user/create">Thêm người dùng mới</a>
+<table class="table">
+    <tr>
+        <th>Tên người dùng</th>
+        <th>Email</th>
+        <th>Số điện thoại</th>
+        <th>Địa chỉ</th>
+        <th>Thành phố</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>@item.UserName</td>
+            <td>@item.Email</td>
+            <td>@item.PhoneNumber</td>
+            <td>@item.Address</td>
+            <td>@item.City</td>
+            <td>
+                <a style="color: blue" href="/admin/user/delete/@item.Id">Xóa</a> | 
+                <a style="color: blue" href="/admin/user/edit/@item.Id">Sửa</a>
+            </td>
+        </tr>
+    }
+</table>
+

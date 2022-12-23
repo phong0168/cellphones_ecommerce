@@ -1,0 +1,31 @@
+﻿@model laptrinhweb.Identity.AppUser
+
+@{
+    ViewBag.Title = "MyProfile";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Thông tin tài khoản</h2>
+<table class="table">
+    <tr>
+        <th>Tên đăng nhập</th>
+        <td>@Model.UserName</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Model.Email</td>
+    </tr>
+    <tr>
+        <th>Số điện thoại</th>
+        <td>@Model.PhoneNumber</td>
+    </tr>
+    <tr>
+        <th>Địa chỉ</th>
+        <td>@Model.Address</td>
+    </tr>
+    <tr>
+        <th>Thành phố</th>
+        <td>@Model.City</td>
+    </tr>
+</table>
+

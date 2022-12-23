@@ -1,0 +1,25 @@
+﻿@model List<laptrinhweb.Models.SanPham>
+
+@{
+    ViewBag.Title = "Lọc thương hiệu";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>@ViewBag.ThuongHieu.Name</h2>
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card" style="max-height: 320px;padding-bottom: 20px">
+                <img src="@item.ImageUrl" class="card-img-top" />
+                <div class="card-body">
+                    <a href="/sanpham/chitietsanpham/@item.SanPhamId"><h5 class="card-title">@item.Name</h5></a>
+                    <p class="card-text">@item.Price.ToString("C")</p>
+                </div>
+            </div>
+        </div>
+
+
+    }
+</div>
+

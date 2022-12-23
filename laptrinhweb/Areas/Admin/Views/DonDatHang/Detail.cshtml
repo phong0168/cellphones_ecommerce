@@ -1,0 +1,39 @@
+﻿@model laptrinhweb.Models.DatHang
+
+@{
+    ViewBag.Title = "Chi tiết";
+}
+
+<h2>Chi tiết đơn đặt hàng</h2>
+<table class="table">
+    <tr>
+        <th>Mã đặt hàng</th>
+        <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <th>Họ tên</th>
+        <td>@Model.ShipName</td>
+    </tr>
+    <tr>
+        <th>Sản phẩm</th>
+        <td>@Model.SanPham.Name</td>
+    </tr>
+    <tr>
+        <th>Số lượng</th>
+        <td>@Model.Quantity</td>
+    </tr>
+    <tr>
+        <th>Địa chỉ</th>
+        <td>@Model.ShipAddress</td>
+    </tr>
+    <tr>
+        <th>Số điện thoại</th>
+        <td>@Model.ShipPhoneNumber</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Model.ShipEmail</td>
+    </tr>
+
+</table>
+

@@ -1,0 +1,51 @@
+﻿@model laptrinhweb.Models.SanPham
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Thêm sản phẩm</h2>
+@using (Html.BeginForm("Create", "SanPham", new { area = "Admin" }, FormMethod.Post, new { enctype = "multipart/dorm-data" }))
+{
+    <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(row => row.Name, "Tên")
+            @Html.TextBoxFor(row => row.Name, new { @class = "form-control", placeholder = "Tên sản phẩm" })
+            @Html.ValidationMessageFor(row => row.Name)
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(row => row.Price, "Giá")
+            @Html.TextBoxFor(row => row.Price, new { @class = "form-control", placeholder = "Giá" })
+            @Html.ValidationMessageFor(row => row.Price)
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(row => row.Description,"Mô tả")
+            @Html.TextBoxFor(row => row.Description, new { @class = "form-control", placeholder = "Mô tả" })
+            @Html.ValidationMessageFor(row => row.Description)
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(row => row.ImageUrl,"ImgUrl")
+            @Html.TextBoxFor(row => row.ImageUrl, new { @class = "form-control", placeholder = "ImgUrl" })
+            @Html.ValidationMessageFor(row => row.ImageUrl)
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(row => row.ThuongHieuId, "Thương hiệu")
+            @Html.DropDownListFor(row=>row.ThuongHieuId, new SelectList(ViewBag.thuongHieus, "ThuongHieuId", "Name"), "Hãy chọn...", new {@class="form-control"})
+            @Html.ValidationMessageFor(row=>row.ThuongHieuId)
+        
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(row => row.ChuDeId, "Chủ đề")
+            @Html.DropDownListFor(row => row.ChuDeId, new SelectList(ViewBag.chuDes, "ChuDeId", "Name"), "Hãy chọn...", new { @class = "form-control" })
+            @Html.ValidationMessageFor(row => row.ChuDeId)
+        </div>
+
+    </div>
+    <button type="submit" class="btn btn-success">Thêm</button>
+}

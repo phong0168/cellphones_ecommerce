@@ -1,0 +1,56 @@
+﻿@model laptrinhweb.Models.GioHang
+
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Giỏ hàng</h2>
+@if (Model != null)
+{
+    
+
+    <table class="table">
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Hình ảnh</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Tổng</th>
+            <th>Xóa</th>
+      
+        </tr>
+        @foreach (var item in Model.Items)
+        {
+            float tong = item.SanPham.Price * item.SoLuong;
+            <tr>
+                <td>@item.SanPham.Name</td>
+                <td><img style="width: 100px; height: 100px" src="@item.SanPham.ImageUrl" /></td>
+                <td>@item.SanPham.Price.ToString("C")</td>
+                <td>
+                    @using (Html.BeginForm("UpdateSL", "GioHang"))
+                    {
+                        <input type="hidden" name="SanPhamId" value="@item.SanPham.SanPhamId" />
+                        <input type="number" value="@item.SoLuong" name="SoLuong" />
+                        <input type="submit" value="Cập nhật" />
+                    }
+                </td>
+                <td>@tong.ToString("C")</td>
+                <td>
+                    <a style="color: blue" href="/giohang/delete/@item.SanPham.SanPhamId">Xóa</a>
+                </td>
+            </tr>
+         
+        }
+        <tr>
+            <td colspan="6">Tổng tiền: @Model.tinhTong().ToString("C")</td>
+        </tr>
+
+    </table>
+    <a class="btn btn-dark" href="/home/index">Tiếp tục mua sắm</a>
+    <a @*style="position: relative; left: 650px"*@ href="/giohang/thanhtoan" class="btn btn-success">Thanh toán</a>
+}
+
+
+
+

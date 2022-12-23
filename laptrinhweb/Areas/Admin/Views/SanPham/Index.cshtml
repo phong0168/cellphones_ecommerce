@@ -1,0 +1,68 @@
+﻿@model List<laptrinhweb.Models.SanPham>
+
+@{
+    ViewBag.Title = "Sản phẩm";
+}
+
+<h3>SẢN PHẨM</h3>
+@Html.Label("Sắp xếp: ")
+@Html.DropDownList("sortDrop",
+new List<SelectListItem> {
+                       new SelectListItem { Value = "tang" , Text = "Sắp xếp giá tăng" },
+                       new SelectListItem { Value = "giam" , Text = "Sắp xếp giá giảm" },
+                       new SelectListItem { Value = "idtang" , Text = "Sắp xếp Id tăng" },
+                       new SelectListItem { Value = "idgiam" , Text = "Sắp xếp Id giảm" },
+                    }, "Vui lòng chọn..."
+                  )
+<br />
+<br />
+<a style="color:blue; text-decoration: underline" href="/admin/sanpham/create">Thêm sản phẩm</a>
+<br />
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Điện thoại</th>
+        <th>Thương hiệu</th>
+        <th>Giá</th>
+        <th>ImgUrl</th>
+        <th></th>
+
+    </tr>
+    @foreach (var item in Model)
+
+    {
+        <tr>
+            <td>@item.SanPhamId</td>
+            <td>@item.Name</td>
+            <td>@item.ThuongHieu.Name</td>
+            <td>@item.Price.ToString("C")</td>
+            <td>@item.ImageUrl</td>
+            <td>
+
+                <a style="color:blue" href="/admin/sanpham/delete/@item.SanPhamId">Xóa</a> |
+                <a style="color:blue" href="/admin/sanpham/edit/@item.SanPhamId">Sửa</a>
+
+            </td>
+
+
+        </tr>
+    }
+</table>
+<br />
+<table style="position:relative; left:44%">
+
+    <tr>
+        <td colspan="9">
+            <ul class="pagination justify-content-center">
+                @for (int i = 1; i <= ViewBag.noOfPage; i++)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="/admin/sanpham/index?sort=@ViewBag.sort&page=@i">@i</a>
+                    </li>
+                }
+
+            </ul>
+        </td>
+    </tr>
+</table>
+

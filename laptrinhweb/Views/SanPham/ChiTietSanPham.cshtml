@@ -1,0 +1,29 @@
+﻿@model laptrinhweb.Models.SanPham
+
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Điện thoại @Model.Name</h2>
+<hr />
+<div class="row">
+    <div class="col-4">
+        <div style="width: 100%">
+
+            <img style="object-fit:cover; width: 100%" src="@Model.ImageUrl" alt="Alternate Text" />
+        </div>
+
+    </div>
+    <div class="col-8">
+        <p>Mã SP: @Model.SanPhamId</p>
+        <p>Giá: <span style="color: red">@Model.Price.ToString("C")</span></p>
+        <div style="border: 1px solid red; padding: 2px">
+            @Model.Description
+        </div>      
+        <br />
+        <a class="btn btn-success" href="/giohang/themgiohang/@Model.SanPhamId">Thêm vào giỏ hàng</a>
+    </div>
+</div>
+
+

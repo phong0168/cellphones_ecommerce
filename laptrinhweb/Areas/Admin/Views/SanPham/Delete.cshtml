@@ -1,0 +1,22 @@
+﻿@model laptrinhweb.Models.SanPham
+
+@{
+    ViewBag.Title = "Delete";
+}
+<h2>Xóa sản phẩm</h2>
+<form action="/admin/sanpham/delete/@Model.SanPhamId" method="post">
+    <input type="hidden" name="SanPhamId" value="@Model.SanPhamId" />
+    <table class="table">
+        <tr>
+            <th>Tên sản phẩm</th>
+            <td>@Model.Name</td>
+        </tr>
+        <tr>
+            <th>Giá</th>
+            <td>@Model.Price.ToString("C")</td>
+        </tr>
+    </table>
+    <button type="submit" class="btn btn-danger" >Xóa</button>
+    <a href="/admin/sanpham" class="btn btn-dark">Hủy</a>
+
+</form>

@@ -1,0 +1,85 @@
+﻿@model laptrinhweb.Models.GioHang
+@{
+    ViewBag.Title = "Thanh toán";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Thanh toán</h2>
+@if (Model != null)
+{
+
+
+    <table class="table">
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Hình ảnh</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Tổng</th>
+        </tr>
+        @foreach (var item in Model.Items)
+        {
+            float tong = item.SanPham.Price * item.SoLuong;
+            <tr>
+                <td>@item.SanPham.Name</td>
+                <td><img style="width: 100px; height: 100px" src="@item.SanPham.ImageUrl" /></td>
+                <td>@item.SanPham.Price.ToString("C")</td>
+                <td>
+                    @item.SoLuong
+                </td>
+                <td>@tong.ToString("C")</td>
+
+            </tr>
+
+        }
+        <tr>
+            <td colspan="5">Tổng tiền: @Model.tinhTong().ToString("C")</td>
+        </tr>
+
+    </table>
+    foreach (var item in Model.Items)
+    {
+
+<form action="/giohang/thanhtoan" method="post">
+    <input type="hidden" name="SanPhamId" value="@item.SanPham.SanPhamId" />
+    <input type="hidden" name="Quantity" value="@item.SoLuong" />
+    <div class="row">
+        <div class="col-md-8">
+            <label for="Name">Họ tên</label>
+            @Html.TextBox("ShipName", null, new { @class = "form-control", @data_val = "true", @data_val_required = "Họ và tên không được để trống.", @placeholder = "Họ tên" })
+
+            @*<input type="text" id="ShipName" name="ShipName" class="form-control" placeholder="Họ tên" />*@
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <label for="Name">Địa chỉ</label>
+            @Html.TextBox("ShipAddress", null, new { @class = "form-control", @data_val = "true", @data_val_required = "Địa chỉ không được để trống.", @placeholder = "Địa chỉ" })
+            @*<input type="text" id="ShipAddress" name="ShipAddress" class="form-control" placeholder="Địa chỉ" />*@
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label for="Name">Số điện thoại</label>
+            @Html.TextBox("ShipPhoneNumber", null, new { @class = "form-control", @data_val = "true", @data_val_required = "Số điện thoại không được để trống.", @placeholder = "Số điện thoại" })
+            @*<input type="text" id="ShipPhoneNumber" name="ShipPhoneNumber" class="form-control" placeholder="Số điện thoại" />*@
+        </div>
+        <div class="col-md-4">
+            <label for="Name">Email</label>
+            <input type="text" id="ShipEmail" name="ShipEmail" class="form-control" placeholder="Email" />
+        </div>
+
+    </div>
+    @Html.ValidationSummary()
+
+    <button class="btn btn-success">Đặt hàng</button>
+
+
+
+
+</form>
+        }
+}
+

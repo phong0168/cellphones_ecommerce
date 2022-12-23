@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.6.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>@ViewBag.Title</title>
+    <style>
+      
+        li a {
+            text-decoration: none;
+        }
+
+        div a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .field-validation-error {
+            color: red;
+        }
+
+        .validation-summary-errors {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-text" style="background-color: #ffd400">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/home">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/sanpham">Sản phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/user">Người dùng</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/dondathang">Đơn hàng</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/sanpham/apiget">Api Get</a>
+                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/account/Logout">Đăng xuất</a>
+                        </li>
+
+                    }
+
+                </ul>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div style="font-weight: bold; position: relative; left: -15px;">Hello @User.Identity.Name</div>
+                }
+                <form class="d-flex" role="search" action="/admin/sanpham/index">
+                    <input class="form-control me-2" type="search" placeholder="Search..." id="search" name="search" value="@ViewBag.search">
+                    <button class="btn" style="background-color:darkorange" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <br />
+    <div class="container-fluid">
+            @RenderBody()
+    </div>
+</body>
+</html>
+<script>
+    $("#sortDrop").change(function () {
+        const value = $("#sortDrop").val();
+        window.location.href = "/admin/sanpham/index?sort=" + value;
+    })
+</script>

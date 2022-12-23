@@ -1,0 +1,23 @@
+﻿@model laptrinhweb.Identity.AppUser
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Xóa người dùng</h2>
+<form action="/admin/user/delete/@Model.Id" method="post">
+    <table class="table">
+        <tr>
+            <th>Tên người dùng</th>
+            <td>@Model.UserName</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>@Model.Email</td>
+        </tr>
+    </table>
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a href="/admin/user" class="btn btn-dark">Hủy</a>
+
+</form>
+

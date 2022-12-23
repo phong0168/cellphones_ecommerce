@@ -1,0 +1,49 @@
+﻿@model laptrinhweb.ViewModel.RegisterViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Thêm người dùng mới</h2>
+@using (Html.BeginForm("Create", "User", new { area = "Admin" }, FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.UserName)
+            @Html.TextBoxFor(temp => temp.UserName, new { placeholder = "Tên đăng nhập", @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.UserName)
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.Password)
+            @Html.TextBoxFor(temp => temp.Password, new { placeholder = "Mật khẩu", @class = "form-control", type = "password" })
+            @Html.ValidationMessageFor(temp => temp.Password)
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.ConfirmPassword)
+            @Html.TextBoxFor(temp => temp.ConfirmPassword, new { placeholder = "Nhập lại mật khẩu", @class = "form-control", type = "password" })
+            @Html.ValidationMessageFor(temp => temp.ConfirmPassword)
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.Email)
+            @Html.TextBoxFor(temp => temp.Email, new { placeholder = "Nhập Email", @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.Email)
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.Address)
+            @Html.TextBoxFor(temp => temp.Address, new { placeholder = "Nhập địa chỉ", @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.Address)
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.City)
+            @Html.TextBoxFor(temp => temp.City, new { placeholder = "Thành phố", @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.City)
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.PhoneNumber)
+            @Html.TextBoxFor(temp => temp.PhoneNumber, new { placeholder = "Nhập số điện thoại", @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.PhoneNumber)
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Đăng ký</button>
+}
+

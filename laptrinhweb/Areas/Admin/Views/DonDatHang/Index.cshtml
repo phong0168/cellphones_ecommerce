@@ -1,0 +1,26 @@
+﻿@model List<laptrinhweb.Models.DatHang>
+
+@{
+    ViewBag.Title = "Đơn đặt hàng";
+}
+
+<h2>Danh sách đơn đặt hàng</h2>
+<table class="table">
+    <tr>
+        <th>Mã đặt hàng</th>
+        <th>Họ tên</th>
+        <th>Sản phẩm</th>
+        <th>Số lượng</th>
+    </tr>
+    @foreach(var item in Model)
+            {
+                <tr>
+                    <td><a class="btn btn-link" href="/admin/dondathang/detail/@item.Id">@item.Id</a></td>
+                    <td>@item.ShipName</td>
+                    <td>@item.SanPham.Name</td>
+                    <td>@item.Quantity</td>
+                </tr>
+            }
+
+</table>
+

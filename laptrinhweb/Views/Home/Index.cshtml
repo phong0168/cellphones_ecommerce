@@ -1,0 +1,51 @@
+﻿@model List<laptrinhweb.Models.SanPham>
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="/Image/720-220-720x220-214.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+            <img src="/Image/720-220-720x220-263.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+            <img src="/Image/720-22019-720x220-2.jpg" class="d-block w-100">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<br />
+<h2>BÁN CHẠY TRONG TUẦN</h2>
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card" style="max-height: 320px;padding-bottom: 20px">
+                <img src="@item.ImageUrl" class="card-img-top" />
+                <div class="card-body">
+                    <a href="/sanpham/chitietsanpham/@item.SanPhamId"><h5 class="card-title">@item.Name</h5></a>
+                    <p class="card-text">@item.Price.ToString("C")</p>
+                </div>
+            </div>
+        </div>
+
+
+    }
+</div>
+
+

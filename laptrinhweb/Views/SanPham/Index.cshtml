@@ -1,0 +1,56 @@
+﻿@model List<laptrinhweb.Models.SanPham>
+
+@{
+    ViewBag.Title = "Sản phẩm";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<h3>Sản phẩm</h3>
+@Html.Label("Sắp xếp: ")
+@Html.DropDownList("sortDrop",
+new List<SelectListItem> {
+                       new SelectListItem { Value = "tang" , Text = "Sắp xếp giá tăng" },
+                       new SelectListItem { Value = "giam" , Text = "Sắp xếp giá giảm" },
+                    
+
+
+
+                    }, "Vui lòng chọn..."
+                  )
+<br /> <br />
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card" style="max-height: 320px;padding-bottom: 20px">
+                <img src="@item.ImageUrl" class="card-img-top" />
+                <div class="card-body">
+                    <a href="/sanpham/chitietsanpham/@item.SanPhamId"><h5 class="card-title">@item.Name</h5></a>
+                    <p class="card-text">@item.Price.ToString("C")</p>
+                </div>
+            </div>
+        </div>
+
+
+    }
+</div>
+<br />
+<table style="position:relative; left:44%">
+
+    <tr>
+        <td colspan="9">
+            <ul class="pagination justify-content-center">
+                @for (int i = 1; i <= ViewBag.noOfPage; i++)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="/sanpham/index?sort=@ViewBag.sort&page=@i">@i</a>
+                    </li>
+                }
+
+            </ul>
+        </td>
+    </tr>
+</table>
+
+
+
+

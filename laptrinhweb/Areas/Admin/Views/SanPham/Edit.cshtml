@@ -1,0 +1,61 @@
+﻿@model laptrinhweb.Models.SanPham
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+<form action="/admin/sanpham/edit/@Model.SanPhamId" method="post">
+    <input type="hidden" name="SanPhamId" value="@Model.SanPhamId" />
+    <div class="row">
+        <div class="col-md-6">
+            <label for="Name">Tên sản phẩm</label>
+            <input type="text" id="Name" name="Name" class="form-control" value="@Model.Name" placeholder="Tên sản phẩm" />
+        </div>
+        <div class="col-md-6">
+            <label for="Name">Giá</label>
+            <input type="text" id="Price" name="Price" class="form-control" value="@Model.Price.ToString("C")" placeholder="Giá" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="Description">Mô tả</label>
+            <input type="text" id="Description" name="Description" class="form-control" value="@Model.Description" placeholder="Mô tả" />
+        </div>
+        <div class="col-md-6">
+            <label for="ImageUrl">ImgUrl</label>
+            <input type="text" id="ImageUrl" name="ImageUrl" class="form-control" value="@Model.ImageUrl" placeholder="ImgUrl" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="ThuongHieuId">Thương hiệu</label>
+            <select class="form-control" id="ThuongHieuId" name="ThuongHieuId">
+                <option value="">Hãy chọn...</option>
+                @foreach(var item in ViewBag.thuongHieus)
+                {
+                    <option value="@item.ThuongHieuId">
+                        @item.Name
+                    </option>
+                }
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="Description">Chủ đề</label>
+            <select class="form-control" id="ChuDeId" name="ChuDeId">
+                <option value="">Hãy chọn...</option>
+                @foreach (var item in ViewBag.chuDes)
+                {
+                    <option value="@item.ChuDeId">
+                        @item.Name
+                    </option>
+                }
+            </select>
+        </div>
+
+    </div>
+    <button type="submit" class="btn btn-success">Sửa</button>
+
+
+</form>
+
